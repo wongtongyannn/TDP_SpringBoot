@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org"
+    th:replace="~{base::html(
+        ~{::title},
+        ~{::content},
+        ~{::additionalCss},
+        ~{}
+    )}"
+    >
+
+    <th:block th:fragement="additionalCss">
+        <link rel="stylesheet" href="style.css">
+    </th:block>
+
+    <title>Atas Trvael Gear</title>
+   
+    <th:block th:fragment="content">
+        <img src="image.jpeg" id="champion-image"/>
+        <p>Your one-stop place to stock up on all your travelling essentials.</p>
+        <p>Current Date Time: <span th:text="${currentDateTime}"></span></p>
+    </th:block>
+    
+    </html>

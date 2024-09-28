@@ -1,0 +1,24 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: html(
+          ~{::title},
+          ~{::content},
+          ~{},
+          ~{}
+      )}">
+
+
+<title>Create a new product</title>
+
+<th:block th:fragment="content">
+    <div class="container mt-5">
+        <h1 class="mb-4">Create New Product</h1>
+        <form th:object="${product}" method="post">
+            <!-- Include the form fields partial here -->
+            <div th:replace="~{products/product-form-fields :: fields}"></div>
+     
+            <button type="submit" class="btn btn-primary">Create Product</button>
+        </form>
+    </div>
+</th:block>
+</html>
+

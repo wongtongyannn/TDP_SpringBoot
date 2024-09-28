@@ -1,0 +1,36 @@
+<div th:fragment="fields">
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}" required>
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="display:block"></div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea class="form-control" id="description" th:field="*{description}" rows="4"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" class="form-control" id="price" th:field="*{price}" step="0.01" required>
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}" th:errors="*{price}" style="display:block"></div>
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <select class="form-control" id="category" th:field="*{category}" required>
+            <option value="">Select a category</option>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('category')}" th:errors="*{category}" style="display:block"></div>
+    </div>
+    <div class="mb-3">
+        <label for="tags" class="form-label">Tags:</label>
+        <select multiple class="form-control" id="tags" name="tagIds">
+            <option th:each="tag : ${allTags}"
+              th:value="${tag.id}"
+              th:text="${tag.name}"
+              th:selected="${product.tags != null and product.tags.contains(tag)}">
+            </option>
+         </select>
+     </div>
+</div>
+
